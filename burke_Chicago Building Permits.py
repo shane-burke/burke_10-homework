@@ -14,6 +14,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
+#get_ipython().system('pip install html5lib')
+import html5lib
 
 import pandas as pd
 
@@ -53,7 +55,7 @@ submit.click()
 # In[4]:
 
 
-building_permits = pd.read_html(driver.page_source)[0]
+building_permits = pd.read_html(driver.page_source, flavor='html5lib')[0]
 
 
 # In[5]:
@@ -189,13 +191,11 @@ dob_inspections_with_count[0:5]
 
 inspections_with_count_df = pd.DataFrame(dob_inspections_with_count)
 
-inspections_with_count_df.to_csv("Inspections - 400 E 41ST ST - with counts.csv", index=False)
+
+# In[11]:
 
 
-# In[ ]:
-
-
-
+inspections_with_count_df.head(10)
 
 
 # In[ ]:
